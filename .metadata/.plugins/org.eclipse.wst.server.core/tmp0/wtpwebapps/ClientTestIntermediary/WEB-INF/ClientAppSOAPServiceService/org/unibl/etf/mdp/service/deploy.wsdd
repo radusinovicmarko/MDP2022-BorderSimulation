@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ClientAppSOAPServiceService WSDL service -->
+
+  <service name="ClientAppSOAPService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.mdp.etf.unibl.org"/>
+      <parameter name="wsdlServiceElement" value="ClientAppSOAPServiceService"/>
+      <parameter name="schemaQualified" value="http://service.mdp.etf.unibl.org,http://model.mdp.etf.unibl.org"/>
+      <parameter name="wsdlServicePort" value="ClientAppSOAPService"/>
+      <parameter name="className" value="org.unibl.etf.mdp.service.ClientAppSOAPService"/>
+      <parameter name="wsdlPortType" value="ClientAppSOAPService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://service.mdp.etf.unibl.org" name="login" qname="operNS:login" soapAction="">
+        <parameter xmlns:pns="http://service.mdp.etf.unibl.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:clientName" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://service.mdp.etf.unibl.org" name="logout" qname="operNS:logout" soapAction="">
+        <parameter xmlns:pns="http://service.mdp.etf.unibl.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:clientName" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://service.mdp.etf.unibl.org" xmlns:retNS="http://service.mdp.etf.unibl.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="checkIfActive" qname="operNS:checkIfActive" returnQName="retNS:checkIfActiveReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://service.mdp.etf.unibl.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:client" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://service.mdp.etf.unibl.org" xmlns:retNS="http://service.mdp.etf.unibl.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getNextPerson" qname="operNS:getNextPerson" returnQName="retNS:getNextPersonReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://service.mdp.etf.unibl.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:client" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://service.mdp.etf.unibl.org" name="logPassenger" qname="operNS:logPassenger" soapAction="">
+        <parameter xmlns:pns="http://service.mdp.etf.unibl.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:personID" type="tns:string"/>
+        <parameter xmlns:pns="http://service.mdp.etf.unibl.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:passed" type="tns:boolean"/>
+      </operation>
+      <operation xmlns:operNS="http://service.mdp.etf.unibl.org" xmlns:retNS="http://service.mdp.etf.unibl.org" xmlns:rtns="http://model.mdp.etf.unibl.org" name="getNextDocument" qname="operNS:getNextDocument" returnQName="retNS:getNextDocumentReturn" returnType="rtns:Document" soapAction="">
+        <parameter xmlns:pns="http://service.mdp.etf.unibl.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:client" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="logout checkIfActive getNextPerson login getNextDocument logPassenger"/>
+
+      <typeMapping xmlns:ns="http://model.mdp.etf.unibl.org" qname="ns:Document" type="java:org.unibl.etf.mdp.model.Document" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

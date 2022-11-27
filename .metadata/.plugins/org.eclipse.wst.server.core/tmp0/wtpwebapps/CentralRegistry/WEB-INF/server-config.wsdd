@@ -1,0 +1,97 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\User20\eclipse-workspace-mdp\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\CentralRegistry\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="BorderTerminalService" provider="java:RPC" style="wrapped" use="literal">
+  <ns3:operation name="addBorderTerminal" qname="ns1:addBorderTerminal" returnQName="ns1:addBorderTerminalReturn" returnType="ns2:BorderTerminal" soapAction="" xmlns:ns1="http://service.mdp.etf.unibl.org" xmlns:ns2="http://model.mdp.etf.unibl.org" xmlns:ns3="http://xml.apache.org/axis/wsdd/">
+   <ns3:parameter qname="ns1:terminal" type="ns2:BorderTerminal"/>
+  </ns3:operation>
+  <ns1:operation name="getBorderTerminal" qname="ns3:getBorderTerminal" returnQName="ns3:getBorderTerminalReturn" returnType="ns4:BorderTerminal" soapAction="" xmlns:ns3="http://service.mdp.etf.unibl.org" xmlns:ns4="http://model.mdp.etf.unibl.org">
+   <ns1:parameter qname="ns3:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="deleteBorderTerminal" qname="ns5:deleteBorderTerminal" returnQName="ns5:deleteBorderTerminalReturn" returnType="xsd:boolean" soapAction="" xmlns:ns5="http://service.mdp.etf.unibl.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:terminal" type="ns6:BorderTerminal" xmlns:ns6="http://model.mdp.etf.unibl.org"/>
+  </ns1:operation>
+  <ns1:operation name="updateBorderTerminal" qname="ns7:updateBorderTerminal" returnQName="ns7:updateBorderTerminalReturn" returnType="ns8:BorderTerminal" soapAction="" xmlns:ns7="http://service.mdp.etf.unibl.org" xmlns:ns8="http://model.mdp.etf.unibl.org">
+   <ns1:parameter qname="ns7:terminal" type="ns8:BorderTerminal"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="addBorderTerminal updateBorderTerminal getBorderTerminal deleteBorderTerminal"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="BorderTerminalService"/>
+  <ns1:parameter name="className" value="org.unibl.etf.mdp.service.BorderTerminalService"/>
+  <ns1:parameter name="wsdlServicePort" value="BorderTerminalService"/>
+  <ns1:parameter name="schemaQualified" value="http://service.mdp.etf.unibl.org,http://model.mdp.etf.unibl.org"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://service.mdp.etf.unibl.org"/>
+  <ns1:parameter name="wsdlServiceElement" value="BorderTerminalServiceService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns9:BorderCrossingPoint" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.unibl.etf.mdp.model.BorderCrossingPoint" xmlns:ns9="http://model.mdp.etf.unibl.org"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns10:BorderEntry" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.unibl.etf.mdp.model.BorderEntry" xmlns:ns10="http://model.mdp.etf.unibl.org"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns11:BorderTerminal" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.unibl.etf.mdp.model.BorderTerminal" xmlns:ns11="http://model.mdp.etf.unibl.org"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns12:BorderExit" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.unibl.etf.mdp.model.BorderExit" xmlns:ns12="http://model.mdp.etf.unibl.org"/>
+  <ns1:arrayMapping innerType="ns14:BorderExit" languageSpecificType="java:org.unibl.etf.mdp.model.BorderExit[]" qname="ns13:ArrayOf_tns1_BorderExit" xmlns:ns13="http://service.mdp.etf.unibl.org" xmlns:ns14="http://model.mdp.etf.unibl.org"/>
+  <ns1:arrayMapping innerType="ns16:BorderEntry" languageSpecificType="java:org.unibl.etf.mdp.model.BorderEntry[]" qname="ns15:ArrayOf_tns1_BorderEntry" xmlns:ns15="http://service.mdp.etf.unibl.org" xmlns:ns16="http://model.mdp.etf.unibl.org"/>
+ </ns1:service>
+ <ns1:service name="PassengersSOAPService" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="addLog" qname="ns17:addLog" soapAction="" xmlns:ns17="http://service.mdp.etf.unibl.org">
+   <ns1:parameter qname="ns17:personID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="addOnWarantLog" qname="ns18:addOnWarantLog" soapAction="" xmlns:ns18="http://service.mdp.etf.unibl.org">
+   <ns1:parameter qname="ns18:personID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getLog" qname="ns19:getLog" returnQName="ns19:getLogReturn" returnType="xsd:base64Binary" soapAction="" xmlns:ns19="http://service.mdp.etf.unibl.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="allowedMethods" value="addLog getLog addOnWarantLog"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="PassengersSOAPService"/>
+  <ns1:parameter name="className" value="org.unibl.etf.mdp.service.PassengersSOAPService"/>
+  <ns1:parameter name="wsdlServicePort" value="PassengersSOAPService"/>
+  <ns1:parameter name="schemaQualified" value="http://service.mdp.etf.unibl.org"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://service.mdp.etf.unibl.org"/>
+  <ns1:parameter name="wsdlServiceElement" value="PassengersSOAPServiceService"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

@@ -1,0 +1,48 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from TestAppSOAPServiceService WSDL service -->
+
+  <service name="TestAppSOAPService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.mdp.etf.unibl.org"/>
+      <parameter name="wsdlServiceElement" value="TestAppSOAPServiceService"/>
+      <parameter name="schemaQualified" value="http://service.mdp.etf.unibl.org,http://model.mdp.etf.unibl.org"/>
+      <parameter name="wsdlServicePort" value="TestAppSOAPService"/>
+      <parameter name="className" value="org.unibl.etf.mdp.service.TestAppSOAPServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="TestAppSOAPService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="checkIfPassed" qname="operNS:checkIfPassed" xmlns:operNS="http://service.mdp.etf.unibl.org" returnQName="retNS:checkIfPassedReturn" xmlns:retNS="http://service.mdp.etf.unibl.org" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:personID" xmlns:pns="http://service.mdp.etf.unibl.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="checkIfActive" qname="operNS:checkIfActive" xmlns:operNS="http://service.mdp.etf.unibl.org" returnQName="retNS:checkIfActiveReturn" xmlns:retNS="http://service.mdp.etf.unibl.org" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:client" xmlns:pns="http://service.mdp.etf.unibl.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addPoliceControl" qname="operNS:addPoliceControl" xmlns:operNS="http://service.mdp.etf.unibl.org" soapAction="" >
+        <parameter qname="pns:client" xmlns:pns="http://service.mdp.etf.unibl.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:personID" xmlns:pns="http://service.mdp.etf.unibl.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addBorderControl" qname="operNS:addBorderControl" xmlns:operNS="http://service.mdp.etf.unibl.org" soapAction="" >
+        <parameter qname="pns:client" xmlns:pns="http://service.mdp.etf.unibl.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:document" xmlns:pns="http://service.mdp.etf.unibl.org" type="tns:Document" xmlns:tns="http://model.mdp.etf.unibl.org"/>
+      </operation>
+      <parameter name="allowedMethods" value="addPoliceControl checkIfPassed checkIfActive addBorderControl"/>
+
+      <typeMapping
+        xmlns:ns="http://model.mdp.etf.unibl.org"
+        qname="ns:Document"
+        type="java:org.unibl.etf.mdp.model.Document"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

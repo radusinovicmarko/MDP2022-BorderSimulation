@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.unibl.etf.mdp.gui.MainWindowController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Aplikacija">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#logout" text="Odjava" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Kredencijali">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#changePassword" text="Promjena lozinke" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Evidencija putnika">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#showPassengers" text="Prikaz evidencije" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <VBox spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <children>
+                  <Label fx:id="chatLbl" text="Chat ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="notifyBtn" disable="true" mnemonicParsing="false" onAction="#notify" prefWidth="150.0" text="Nastavak rada">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <TabPane prefHeight="338.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+              <tabs>
+                <Tab text="Individualne poruke">
+                  <content>
+                        <BorderPane>
+                           <bottom>
+                              <VBox BorderPane.alignment="CENTER">
+                                 <children>
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <VBox spacing="2.0">
+                                             <children>
+                                                <TextField fx:id="receiverTerminalIDTF" prefWidth="150.0" promptText="ID terminala" />
+                                                <TextField fx:id="receiverCrossingPointIDTF" promptText="ID ulaza/izlaza" />
+                                                <HBox spacing="5.0">
+                                                   <children>
+                                                      <RadioButton fx:id="policeRB" mnemonicParsing="false" text="Policijski" />
+                                                      <RadioButton fx:id="borderRB" mnemonicParsing="false" text="Carinski" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <TextField fx:id="unicastTF" prefWidth="350.0">
+                                             <HBox.margin>
+                                                <Insets top="28.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <Button fx:id="unicastSendBtn" mnemonicParsing="false" onAction="#unicastSend" text="Pošalji">
+                                             <HBox.margin>
+                                                <Insets top="28.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </bottom>
+                           <left>
+                              <ListView fx:id="clientsLV" onMouseClicked="#clientSelected" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                           </left>
+                           <center>
+                              <ListView fx:id="unicastMessagesLV" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                           </center>
+                        </BorderPane>
+                  </content>
+                </Tab>
+                <Tab text="Poruke na nivou terminala">
+                     <content>
+                        <BorderPane prefHeight="278.0" prefWidth="600.0">
+                           <center>
+                              <VBox spacing="5.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <ListView fx:id="multicastMessagesLV" prefHeight="327.0" prefWidth="600.0" />
+                                    <HBox prefHeight="75.0" prefWidth="600.0" spacing="5.0">
+                                       <children>
+                                          <TextField fx:id="multicastTF" prefWidth="450.0" />
+                                          <Button fx:id="multicastSendBtn" mnemonicParsing="false" onAction="#multicastSend" text="Pošalji" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </center>
+                        </BorderPane>
+                     </content>
+                </Tab>
+                  <Tab text="Poruke na nivou sistema">
+                     <content>
+                        <BorderPane prefHeight="278.0" prefWidth="600.0">
+                           <center>
+                              <VBox spacing="5.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <ListView fx:id="broadcastMessagesLV" prefHeight="327.0" prefWidth="600.0" />
+                                    <HBox prefHeight="75.0" prefWidth="600.0" spacing="5.0">
+                                       <children>
+                                          <TextField fx:id="broadcastTF" prefWidth="450.0" />
+                                          <Button fx:id="broadcastSendBtn" mnemonicParsing="false" onAction="#broadcastSend" text="Pošalji" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </center>
+                        </BorderPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+</BorderPane>

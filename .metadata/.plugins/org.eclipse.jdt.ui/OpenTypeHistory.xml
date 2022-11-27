@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=CentralRegistry/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;org.unibl.etf.mdp.control{BorderTerminalSerializationInterface.java[BorderTerminalSerializationInterface" modifiers="513" timestamp="1654869119808"/>
+    <typeInfo handle="=ArrestWarrantRegistry/C:\/Program Files\/Java\/jdk-11.0.10\/lib\/jrt-fs.jar`java.rmi=/module=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/11\/docs\/api\/=/&lt;java.rmi(Remote.class[Remote" modifiers="1537" timestamp="1617734723169"/>
+    <typeInfo handle="=ArrestWarrantRegistry/src&lt;org.unibl.etf.mdp.service{IWarrantsService.java[IWarrantsService" modifiers="513" timestamp="1655503352001"/>
+    <typeInfo handle="=ChatServer/C:\/Program Files\/Java\/jdk-11.0.10\/lib\/jrt-fs.jar`java.base=/module=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/11\/docs\/api\/=/&lt;java.lang(Thread.class[Thread" modifiers="33" timestamp="1617734723169"/>
+    <typeInfo handle="=CentralRegistry/C:\/Users\/User20\/eclipse-workspace-mdp\/apache-tomcat-9.0.55\/lib\/servlet-api.jar=/owner.project.facets=/jst.web=/=/javadoc_location=/https:\/\/javaee.github.io\/javaee-spec\/javadocs\/=/&lt;javax.servlet(ServletContextListener.class[ServletContextListener" modifiers="1537" timestamp="1654790521632"/>
+    <typeInfo handle="=CentralRegistry/C:\/Users\/User20\/eclipse-workspace-mdp\/apache-tomcat-9.0.55\/lib\/servlet-api.jar=/owner.project.facets=/jst.web=/=/javadoc_location=/https:\/\/javaee.github.io\/javaee-spec\/javadocs\/=/&lt;javax.servlet(ServletContextAttributeListener.class[ServletContextAttributeListener" modifiers="1537" timestamp="1654790521632"/>
+</typeInfoHistroy>

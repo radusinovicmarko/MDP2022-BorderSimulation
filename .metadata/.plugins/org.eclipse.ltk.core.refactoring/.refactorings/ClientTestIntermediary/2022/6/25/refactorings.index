@@ -1,0 +1,10 @@
+1655644299175	Rename type 'SOAPService'
+1655646462942	Copy compilation unit
+1655646559051	Delete elements
+1655647057965	Encapsulate field 'borderControl'
+1655647063423	Encapsulate field 'policeControl'
+1655647893234	Rename type 'IntermediarySOAPService'
+1655656168066	Delete element
+1655656260353	Delete elements
+1655669188534	Delete elements
+1655676751466	Encapsulate field 'passedPassengers'

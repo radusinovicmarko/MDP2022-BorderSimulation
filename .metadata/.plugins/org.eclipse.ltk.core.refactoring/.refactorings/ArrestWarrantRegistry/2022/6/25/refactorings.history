@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;ClientApp/src/org.unibl.etf.mdp.service&apos;&#x0D;&#x0A;- Original project: &apos;ArrestWarrantRegistry&apos;&#x0D;&#x0A;- Destination element: &apos;ClientApp/src/org.unibl.etf.mdp.service&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     org.unibl.etf.mdp.service.WarrantsService.java&#x0D;&#x0A;     org.unibl.etf.mdp.service.IWarrantsService.java" description="Copy compilation units" destination="=ClientApp/src&lt;org.unibl.etf.mdp.service" element1="/src&lt;org.unibl.etf.mdp.service{WarrantsService.java" element2="/src&lt;org.unibl.etf.mdp.service{IWarrantsService.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1655666722518" units="2" version="1.0"/>
+</session>

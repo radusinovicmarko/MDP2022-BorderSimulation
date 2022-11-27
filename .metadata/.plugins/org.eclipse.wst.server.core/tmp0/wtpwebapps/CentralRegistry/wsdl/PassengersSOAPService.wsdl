@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.mdp.etf.unibl.org" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.mdp.etf.unibl.org" xmlns:intf="http://service.mdp.etf.unibl.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.mdp.etf.unibl.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="addLog">
+    <complexType>
+     <sequence>
+      <element name="personID" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addLogResponse">
+    <complexType/>
+   </element>
+   <element name="addOnWarantLog">
+    <complexType>
+     <sequence>
+      <element name="personID" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addOnWarantLogResponse">
+    <complexType/>
+   </element>
+   <element name="getLog">
+    <complexType/>
+   </element>
+   <element name="getLogResponse">
+    <complexType>
+     <sequence>
+      <element name="getLogReturn" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="addOnWarantLogResponse">
+
+      <wsdl:part element="impl:addOnWarantLogResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addLogRequest">
+
+      <wsdl:part element="impl:addLog" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addOnWarantLogRequest">
+
+      <wsdl:part element="impl:addOnWarantLog" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addLogResponse">
+
+      <wsdl:part element="impl:addLogResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLogRequest">
+
+      <wsdl:part element="impl:getLog" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLogResponse">
+
+      <wsdl:part element="impl:getLogResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="PassengersSOAPService">
+
+      <wsdl:operation name="addLog">
+
+         <wsdl:input message="impl:addLogRequest" name="addLogRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addLogResponse" name="addLogResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addOnWarantLog">
+
+         <wsdl:input message="impl:addOnWarantLogRequest" name="addOnWarantLogRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addOnWarantLogResponse" name="addOnWarantLogResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getLog">
+
+         <wsdl:input message="impl:getLogRequest" name="getLogRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getLogResponse" name="getLogResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="PassengersSOAPServiceSoapBinding" type="impl:PassengersSOAPService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="addLog">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addLogRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addLogResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addOnWarantLog">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addOnWarantLogRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addOnWarantLogResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getLog">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getLogRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getLogResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="PassengersSOAPServiceService">
+
+      <wsdl:port binding="impl:PassengersSOAPServiceSoapBinding" name="PassengersSOAPService">
+
+         <wsdlsoap:address location="http://localhost:8080/CentralRegistry/services/PassengersSOAPService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

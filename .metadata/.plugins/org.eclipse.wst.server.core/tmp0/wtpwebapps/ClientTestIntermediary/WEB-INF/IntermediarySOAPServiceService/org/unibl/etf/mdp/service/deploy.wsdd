@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from IntermediarySOAPServiceService WSDL service -->
+
+  <service name="IntermediarySOAPService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.mdp.etf.unibl.org"/>
+      <parameter name="wsdlServiceElement" value="IntermediarySOAPServiceService"/>
+      <parameter name="schemaQualified" value="http://service.mdp.etf.unibl.org"/>
+      <parameter name="wsdlServicePort" value="IntermediarySOAPService"/>
+      <parameter name="className" value="org.unibl.etf.mdp.service.IntermediarySOAPService"/>
+      <parameter name="wsdlPortType" value="IntermediarySOAPService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://service.mdp.etf.unibl.org" name="login" qname="operNS:login" soapAction="">
+        <parameter xmlns:pns="http://service.mdp.etf.unibl.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:clientName" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://service.mdp.etf.unibl.org" name="logout" qname="operNS:logout" soapAction="">
+        <parameter xmlns:pns="http://service.mdp.etf.unibl.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:clientName" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://service.mdp.etf.unibl.org" name="addPoliceControl" qname="operNS:addPoliceControl" soapAction="">
+        <parameter xmlns:pns="http://service.mdp.etf.unibl.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:client" type="tns:string"/>
+        <parameter xmlns:pns="http://service.mdp.etf.unibl.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:personID" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://service.mdp.etf.unibl.org" xmlns:retNS="http://service.mdp.etf.unibl.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="checkIfActive" qname="operNS:checkIfActive" returnQName="retNS:checkIfActiveReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://service.mdp.etf.unibl.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:client" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="addPoliceControl logout checkIfActive login"/>
+
+  </service>
+</deployment>

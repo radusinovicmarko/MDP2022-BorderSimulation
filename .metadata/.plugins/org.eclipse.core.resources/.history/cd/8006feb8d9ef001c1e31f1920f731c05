@@ -1,0 +1,27 @@
+package org.unibl.etf.mdp.service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.unibl.etf.mdp.model.Document;
+
+public class IntermediarySOAPService {
+	
+	public boolean checkIfActive(String client) {
+		HashMap<String, ArrayList<String>> policeControl = SOAPData.getPoliceControl();
+		HashMap<String, ArrayList<Document>> borderControl = SOAPData.getBorderControl();
+		return policeControl.containsKey(client + "-p") && borderControl.containsKey(client + "-b");
+	}
+	
+	public void addPoliceControl(String client, String personID) {
+		HashMap<String, ArrayList<String>> policeControl = SOAPData.getPoliceControl();
+		if (checkIfActive(client))
+			policeControl.get(client + "-p").add(personID); 
+	}
+	
+	public void addBorderControl(String client, Document document) {
+		HashMap<String, ArrayList<Document>> policeControl = SOAPData.getBorderControl();
+		if (checkIfActive(client))
+			policeControl.get(client + "-p").add(document); 
+	}
+}

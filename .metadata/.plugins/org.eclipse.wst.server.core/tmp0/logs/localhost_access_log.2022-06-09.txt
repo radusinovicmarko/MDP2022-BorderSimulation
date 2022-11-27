@@ -1,0 +1,7 @@
+127.0.0.1 - - [09/Jun/2022:18:04:15 +0200] "GET / HTTP/1.1" 404 751
+127.0.0.1 - - [09/Jun/2022:18:04:21 +0200] "POST /Test/services/AdminService HTTP/1.0" 200 291
+127.0.0.1 - - [09/Jun/2022:18:04:21 +0200] "POST /Test/services/AdminService HTTP/1.0" 200 4106
+127.0.0.1 - - [09/Jun/2022:18:04:45 +0200] "POST /Test/services/Test HTTP/1.1" 200 346
+127.0.0.1 - - [09/Jun/2022:18:15:48 +0200] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [09/Jun/2022:18:15:49 +0200] "GET /CentralRegistry/ HTTP/1.1" 404 771
+0:0:0:0:0:0:0:1 - - [09/Jun/2022:18:15:49 +0200] "GET /favicon.ico HTTP/1.1" 404 762

@@ -1,0 +1,6 @@
+127.0.0.1 - - [26/Jul/2022:00:05:53 +0200] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [26/Jul/2022:00:05:53 +0200] "GET /UsersDatabase/ HTTP/1.1" 404 769
+0:0:0:0:0:0:0:1 - - [26/Jul/2022:00:05:54 +0200] "GET /favicon.ico HTTP/1.1" 404 762
+0:0:0:0:0:0:0:1 - - [26/Jul/2022:00:08:24 +0200] "GET /UsersDatabase/api/users/vanja HTTP/1.1" 200 41
+0:0:0:0:0:0:0:1 - - [26/Jul/2022:00:10:38 +0200] "POST /UsersDatabase/api/users/vanja HTTP/1.1" 405 725
+0:0:0:0:0:0:0:1 - - [26/Jul/2022:00:10:45 +0200] "POST /UsersDatabase/api/users/ HTTP/1.1" 400 795

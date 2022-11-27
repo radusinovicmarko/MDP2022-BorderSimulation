@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+option java_outer_classname = "BorderTerminalProtos";
+
+option java_package = "org.unibl.etf.mdp.model.protobuf";
+
+message BorderEntryWrapper {
+	optional int32 id = 1;
+	optional int32 policePort = 2;
+	optional int32 borderPort = 3;
+}
+
+message BorderExitWrapper {
+	optional int32 id = 1;
+	optional int32 policePort = 2;
+	optional int32 borderPort = 3;
+}
+
+message BorderTerminalWrapper {
+	required string name = 1;
+    optional int32 id = 2;
+    optional int32 serialID = 3;
+    
+    repeated BorderEntryWrapper entries = 4;
+    repeated BorderExitWrapper exits = 5;
+}

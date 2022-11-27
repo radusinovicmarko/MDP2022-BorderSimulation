@@ -1,0 +1,10 @@
+127.0.0.1 - - [30/Jul/2022:18:00:09 +0200] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [30/Jul/2022:18:00:11 +0200] "GET /CentralRegistry/ HTTP/1.1" 404 771
+0:0:0:0:0:0:0:1 - - [30/Jul/2022:18:00:12 +0200] "GET /favicon.ico HTTP/1.1" 404 762
+127.0.0.1 - - [30/Jul/2022:18:00:18 +0200] "POST /CentralRegistry/services/BorderTerminalService HTTP/1.0" 200 1100
+127.0.0.1 - - [30/Jul/2022:18:00:56 +0200] "POST /CentralRegistry/services/BorderTerminalService HTTP/1.0" 200 1108
+127.0.0.1 - - [30/Jul/2022:18:00:59 +0200] "POST /CentralRegistry/services/BorderTerminalService HTTP/1.0" 200 1096
+127.0.0.1 - - [30/Jul/2022:18:01:07 +0200] "POST /CentralRegistry/services/BorderTerminalService HTTP/1.0" 200 983
+127.0.0.1 - - [30/Jul/2022:18:01:10 +0200] "POST /CentralRegistry/services/BorderTerminalService HTTP/1.0" 200 1096
+127.0.0.1 - - [30/Jul/2022:18:03:30 +0200] "POST /CentralRegistry/services/BorderTerminalService HTTP/1.0" 200 748
+127.0.0.1 - - [30/Jul/2022:18:03:39 +0200] "POST /CentralRegistry/services/BorderTerminalService HTTP/1.0" 200 748

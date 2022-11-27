@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="0/org.eclipse.jst.ws.wsImpl.java">
+		<item value="org.unibl.etf.mdp.service.ClientAppSOAPService"/>
+		<item value="org.unibl.etf.mdp.service.PassengersSOAPService"/>
+		<item value="org.unibl.etf.mdp.service.TestAppSOAPService"/>
+		<item value="org.unibl.etf.mdp.service.IntermediarySOAPService"/>
+		<item value="SoapService"/>
+	</list>
+</section>

@@ -1,0 +1,5 @@
+Properties prop = new Properties();
+			prop.load(new FileInputStream(CONFIG_PATH));
+			DBBaseURL = prop.getProperty("DB_BASE_URL");
+			FSBaseURL = prop.getProperty("FS_BASE_URL");
+			CRBaseURL = prop.getProperty("CR_BASE_URL");

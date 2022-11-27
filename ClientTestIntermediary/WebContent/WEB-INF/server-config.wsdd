@@ -1,0 +1,130 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\User20\eclipse-workspace-mdp\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ClientTestIntermediary\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="TestAppSOAPService" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="checkIfPassed" qname="ns1:checkIfPassed" returnQName="ns1:checkIfPassedReturn" returnType="xsd:int" soapAction="" xmlns:ns1="http://service.mdp.etf.unibl.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:personID" type="xsd:string"/>
+  </ns2:operation>
+  <ns1:operation name="checkIfActive" qname="ns2:checkIfActive" returnQName="ns2:checkIfActiveReturn" returnType="xsd:boolean" soapAction="" xmlns:ns2="http://service.mdp.etf.unibl.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:client" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="addPoliceControl" qname="ns3:addPoliceControl" soapAction="" xmlns:ns3="http://service.mdp.etf.unibl.org">
+   <ns1:parameter qname="ns3:client" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns3:personID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="addBorderControl" qname="ns4:addBorderControl" soapAction="" xmlns:ns4="http://service.mdp.etf.unibl.org">
+   <ns1:parameter qname="ns4:client" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns4:document" type="ns5:Document" xmlns:ns5="http://model.mdp.etf.unibl.org"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="addPoliceControl checkIfPassed checkIfActive addBorderControl"/>
+  <ns1:parameter name="wsdlPortType" value="TestAppSOAPService"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://service.mdp.etf.unibl.org,http://model.mdp.etf.unibl.org"/>
+  <ns1:parameter name="wsdlServicePort" value="TestAppSOAPService"/>
+  <ns1:parameter name="className" value="org.unibl.etf.mdp.service.TestAppSOAPService"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://service.mdp.etf.unibl.org"/>
+  <ns1:parameter name="wsdlServiceElement" value="TestAppSOAPServiceService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns6:Document" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.unibl.etf.mdp.model.Document" xmlns:ns6="http://model.mdp.etf.unibl.org"/>
+ </ns1:service>
+ <ns1:service name="ClientAppSOAPService" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="login" qname="ns7:login" soapAction="" xmlns:ns7="http://service.mdp.etf.unibl.org">
+   <ns1:parameter qname="ns7:clientName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="logout" qname="ns8:logout" soapAction="" xmlns:ns8="http://service.mdp.etf.unibl.org">
+   <ns1:parameter qname="ns8:clientName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="checkIfActive" qname="ns9:checkIfActive" returnQName="ns9:checkIfActiveReturn" returnType="xsd:boolean" soapAction="" xmlns:ns9="http://service.mdp.etf.unibl.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns9:client" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getNextPerson" qname="ns10:getNextPerson" returnQName="ns10:getNextPersonReturn" returnType="xsd:string" soapAction="" xmlns:ns10="http://service.mdp.etf.unibl.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns10:client" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="logPassenger" qname="ns11:logPassenger" soapAction="" xmlns:ns11="http://service.mdp.etf.unibl.org">
+   <ns1:parameter qname="ns11:personID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns11:passed" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getNextDocument" qname="ns12:getNextDocument" returnQName="ns12:getNextDocumentReturn" returnType="ns13:Document" soapAction="" xmlns:ns12="http://service.mdp.etf.unibl.org" xmlns:ns13="http://model.mdp.etf.unibl.org">
+   <ns1:parameter qname="ns12:client" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="logout checkIfActive getNextPerson login getNextDocument logPassenger"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="ClientAppSOAPService"/>
+  <ns1:parameter name="className" value="org.unibl.etf.mdp.service.ClientAppSOAPService"/>
+  <ns1:parameter name="wsdlServicePort" value="ClientAppSOAPService"/>
+  <ns1:parameter name="schemaQualified" value="http://service.mdp.etf.unibl.org,http://model.mdp.etf.unibl.org"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://service.mdp.etf.unibl.org"/>
+  <ns1:parameter name="wsdlServiceElement" value="ClientAppSOAPServiceService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns14:Document" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.unibl.etf.mdp.model.Document" xmlns:ns14="http://model.mdp.etf.unibl.org"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="IntermediarySOAPService" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="login" qname="ns15:login" soapAction="" xmlns:ns15="http://service.mdp.etf.unibl.org">
+   <ns1:parameter qname="ns15:clientName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="logout" qname="ns16:logout" soapAction="" xmlns:ns16="http://service.mdp.etf.unibl.org">
+   <ns1:parameter qname="ns16:clientName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="addPoliceControl" qname="ns17:addPoliceControl" soapAction="" xmlns:ns17="http://service.mdp.etf.unibl.org">
+   <ns1:parameter qname="ns17:client" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns17:personID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="checkIfActive" qname="ns18:checkIfActive" returnQName="ns18:checkIfActiveReturn" returnType="xsd:boolean" soapAction="" xmlns:ns18="http://service.mdp.etf.unibl.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns18:client" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="addPoliceControl logout checkIfActive login"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="IntermediarySOAPService"/>
+  <ns1:parameter name="className" value="org.unibl.etf.mdp.service.IntermediarySOAPService"/>
+  <ns1:parameter name="wsdlServicePort" value="IntermediarySOAPService"/>
+  <ns1:parameter name="schemaQualified" value="http://service.mdp.etf.unibl.org"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://service.mdp.etf.unibl.org"/>
+  <ns1:parameter name="wsdlServiceElement" value="IntermediarySOAPServiceService"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

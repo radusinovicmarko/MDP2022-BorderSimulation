@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.mdp.etf.unibl.org" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.mdp.etf.unibl.org" xmlns:intf="http://service.mdp.etf.unibl.org" xmlns:tns1="http://model.mdp.etf.unibl.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.mdp.etf.unibl.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://model.mdp.etf.unibl.org"/>
+   <element name="addBorderTerminal">
+    <complexType>
+     <sequence>
+      <element name="terminal" type="tns1:BorderTerminal"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns1_BorderEntry">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:BorderEntry"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns1_BorderExit">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:BorderExit"/>
+    </sequence>
+   </complexType>
+   <element name="addBorderTerminalResponse">
+    <complexType>
+     <sequence>
+      <element name="addBorderTerminalReturn" type="tns1:BorderTerminal"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBorderTerminal">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBorderTerminalResponse">
+    <complexType>
+     <sequence>
+      <element name="getBorderTerminalReturn" type="tns1:BorderTerminal"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteBorderTerminal">
+    <complexType>
+     <sequence>
+      <element name="terminal" type="tns1:BorderTerminal"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteBorderTerminalResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteBorderTerminalReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateBorderTerminal">
+    <complexType>
+     <sequence>
+      <element name="terminal" type="tns1:BorderTerminal"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateBorderTerminalResponse">
+    <complexType>
+     <sequence>
+      <element name="updateBorderTerminalReturn" type="tns1:BorderTerminal"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://model.mdp.etf.unibl.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://service.mdp.etf.unibl.org"/>
+   <complexType abstract="true" name="BorderCrossingPoint">
+    <sequence>
+     <element name="borderControlPort" type="xsd:int"/>
+     <element name="id" type="xsd:int"/>
+     <element name="policeControlPort" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="BorderEntry">
+    <complexContent>
+     <extension base="tns1:BorderCrossingPoint">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="BorderExit">
+    <complexContent>
+     <extension base="tns1:BorderCrossingPoint">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="BorderTerminal">
+    <sequence>
+     <element name="entries" nillable="true" type="impl:ArrayOf_tns1_BorderEntry"/>
+     <element name="exits" nillable="true" type="impl:ArrayOf_tns1_BorderExit"/>
+     <element name="id" type="xsd:int"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="serialIDCrossingPoint" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="updateBorderTerminalRequest">
+
+      <wsdl:part element="impl:updateBorderTerminal" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteBorderTerminalRequest">
+
+      <wsdl:part element="impl:deleteBorderTerminal" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteBorderTerminalResponse">
+
+      <wsdl:part element="impl:deleteBorderTerminalResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addBorderTerminalResponse">
+
+      <wsdl:part element="impl:addBorderTerminalResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateBorderTerminalResponse">
+
+      <wsdl:part element="impl:updateBorderTerminalResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addBorderTerminalRequest">
+
+      <wsdl:part element="impl:addBorderTerminal" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBorderTerminalRequest">
+
+      <wsdl:part element="impl:getBorderTerminal" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBorderTerminalResponse">
+
+      <wsdl:part element="impl:getBorderTerminalResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="BorderTerminalService">
+
+      <wsdl:operation name="addBorderTerminal">
+
+         <wsdl:input message="impl:addBorderTerminalRequest" name="addBorderTerminalRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addBorderTerminalResponse" name="addBorderTerminalResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBorderTerminal">
+
+         <wsdl:input message="impl:getBorderTerminalRequest" name="getBorderTerminalRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getBorderTerminalResponse" name="getBorderTerminalResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteBorderTerminal">
+
+         <wsdl:input message="impl:deleteBorderTerminalRequest" name="deleteBorderTerminalRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteBorderTerminalResponse" name="deleteBorderTerminalResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateBorderTerminal">
+
+         <wsdl:input message="impl:updateBorderTerminalRequest" name="updateBorderTerminalRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateBorderTerminalResponse" name="updateBorderTerminalResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BorderTerminalServiceSoapBinding" type="impl:BorderTerminalService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="addBorderTerminal">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addBorderTerminalRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addBorderTerminalResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBorderTerminal">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBorderTerminalRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBorderTerminalResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteBorderTerminal">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteBorderTerminalRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteBorderTerminalResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateBorderTerminal">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateBorderTerminalRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateBorderTerminalResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BorderTerminalServiceService">
+
+      <wsdl:port binding="impl:BorderTerminalServiceSoapBinding" name="BorderTerminalService">
+
+         <wsdlsoap:address location="http://localhost:8080/CentralRegistry/services/BorderTerminalService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

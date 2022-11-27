@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 3 elements to &apos;maven/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;SoapTest&apos;&#x0D;&#x0A;- Destination element: &apos;maven/src/main/java&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     SoapInterface.java&#x0D;&#x0A;     SoapService.java&#x0D;&#x0A;     Test.java" description="Copy compilation units" destination="=maven/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/" element1="/src=/optional=/true=/=/maven.pomderived=/true=/&lt;{SoapInterface.java" element2="/src=/optional=/true=/=/maven.pomderived=/true=/&lt;{SoapService.java" element3="/src=/optional=/true=/=/maven.pomderived=/true=/&lt;{Test.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1655510050582" units="3" version="1.0"/>
+</session>

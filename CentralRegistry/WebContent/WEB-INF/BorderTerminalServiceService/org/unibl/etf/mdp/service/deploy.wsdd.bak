@@ -1,0 +1,84 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BorderTerminalServiceService WSDL service -->
+
+  <service name="BorderTerminalService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.mdp.etf.unibl.org"/>
+      <parameter name="wsdlServiceElement" value="BorderTerminalServiceService"/>
+      <parameter name="schemaQualified" value="http://service.mdp.etf.unibl.org,http://model.mdp.etf.unibl.org"/>
+      <parameter name="wsdlServicePort" value="BorderTerminalService"/>
+      <parameter name="className" value="org.unibl.etf.mdp.service.BorderTerminalServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="BorderTerminalService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="addBorderTerminal" qname="operNS:addBorderTerminal" xmlns:operNS="http://service.mdp.etf.unibl.org" returnQName="retNS:addBorderTerminalReturn" xmlns:retNS="http://service.mdp.etf.unibl.org" returnType="rtns:BorderTerminal" xmlns:rtns="http://model.mdp.etf.unibl.org" soapAction="" >
+        <parameter qname="pns:terminal" xmlns:pns="http://service.mdp.etf.unibl.org" type="tns:BorderTerminal" xmlns:tns="http://model.mdp.etf.unibl.org"/>
+      </operation>
+      <operation name="getBorderTerminal" qname="operNS:getBorderTerminal" xmlns:operNS="http://service.mdp.etf.unibl.org" returnQName="retNS:getBorderTerminalReturn" xmlns:retNS="http://service.mdp.etf.unibl.org" returnType="rtns:BorderTerminal" xmlns:rtns="http://model.mdp.etf.unibl.org" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://service.mdp.etf.unibl.org" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteBorderTerminal" qname="operNS:deleteBorderTerminal" xmlns:operNS="http://service.mdp.etf.unibl.org" returnQName="retNS:deleteBorderTerminalReturn" xmlns:retNS="http://service.mdp.etf.unibl.org" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:terminal" xmlns:pns="http://service.mdp.etf.unibl.org" type="tns:BorderTerminal" xmlns:tns="http://model.mdp.etf.unibl.org"/>
+      </operation>
+      <operation name="updateBorderTerminal" qname="operNS:updateBorderTerminal" xmlns:operNS="http://service.mdp.etf.unibl.org" returnQName="retNS:updateBorderTerminalReturn" xmlns:retNS="http://service.mdp.etf.unibl.org" returnType="rtns:BorderTerminal" xmlns:rtns="http://model.mdp.etf.unibl.org" soapAction="" >
+        <parameter qname="pns:terminal" xmlns:pns="http://service.mdp.etf.unibl.org" type="tns:BorderTerminal" xmlns:tns="http://model.mdp.etf.unibl.org"/>
+      </operation>
+      <parameter name="allowedMethods" value="addBorderTerminal updateBorderTerminal getBorderTerminal deleteBorderTerminal"/>
+
+      <typeMapping
+        xmlns:ns="http://model.mdp.etf.unibl.org"
+        qname="ns:BorderCrossingPoint"
+        type="java:org.unibl.etf.mdp.model.BorderCrossingPoint"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://model.mdp.etf.unibl.org"
+        qname="ns:BorderEntry"
+        type="java:org.unibl.etf.mdp.model.BorderEntry"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://model.mdp.etf.unibl.org"
+        qname="ns:BorderTerminal"
+        type="java:org.unibl.etf.mdp.model.BorderTerminal"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://model.mdp.etf.unibl.org"
+        qname="ns:BorderExit"
+        type="java:org.unibl.etf.mdp.model.BorderExit"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://service.mdp.etf.unibl.org"
+        qname="ns:ArrayOf_tns1_BorderExit"
+        type="java:org.unibl.etf.mdp.model.BorderExit[]"
+        innerType="cmp-ns:BorderExit" xmlns:cmp-ns="http://model.mdp.etf.unibl.org"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://service.mdp.etf.unibl.org"
+        qname="ns:ArrayOf_tns1_BorderEntry"
+        type="java:org.unibl.etf.mdp.model.BorderEntry[]"
+        innerType="cmp-ns:BorderEntry" xmlns:cmp-ns="http://model.mdp.etf.unibl.org"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
